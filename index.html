@@ -10,9 +10,23 @@
     <h2>Tateti</h2>
     <br>
     <div>
-        <h4>Jugador 1: <input type="text" idJugador="01"></h4>
-        <br>
-        <h4>Jugador 2: <input type="text" idJugador="10"></h4>
+        <!-- <form name="nombres" onsubmit="guardarJugadores()">
+            <h4>Jugador 1: <input type="text" name="jugador1" id="nombJugador1"></h4>
+            <h4>Jugador 2: <input type="text" name="jugador2" id="nombJugador2"></h4>
+            <button type="submit">Guardar Nombres</button>
+        </form> -->
+        <h4>Jugador 1:
+            <input type="text" name="jugador1" id="nombJugador1">
+            <button type="button" onclick="guardarJugador1()">
+                Guardar Jugador 1
+            </button>
+        </h4>
+        <h4>Jugador 1:
+            <input type="text" name="jugador2" id="nombJugador2">
+            <button type="button" onclick="guardarJugador2()">
+                Guardar Jugador 2
+            </button>
+        </h4>
     </div>
     <br>
     <div>
