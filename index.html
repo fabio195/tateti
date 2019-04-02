@@ -4,71 +4,52 @@
 <head>
     <title>Juego Tateti - Fabio Muñoz</title>
     <script type="text/javascript" src="./js/tateti.js"></script>
+    <style>
+        table td {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+    </style>
+
 </head>
 
-<body onload="refreshUI()">
+<body onload="juegoNuevo()">
     <h2>Tateti</h2>
     <br>
     <div>
-        <!-- <form name="nombres" onsubmit="guardarJugadores()">
-            <h4>Jugador 1: <input type="text" name="jugador1" id="nombJugador1"></h4>
-            <h4>Jugador 2: <input type="text" name="jugador2" id="nombJugador2"></h4>
-            <button type="submit">Guardar Nombres</button>
-        </form> -->
         <h4>Jugador 1:
-            <input type="text" name="jugador1" id="nombJugador1">
-            <button type="button" onclick="guardarJugador1()">
+            <input type="text" name="jugador1" id="nombJugador1" onchange="guardarJugador1()">
+            <!-- <button type="button" onclick="guardarJugador1()">
                 Guardar Jugador 1
-            </button>
+            </button> -->
         </h4>
-        <h4>Jugador 1:
-            <input type="text" name="jugador2" id="nombJugador2">
-            <button type="button" onclick="guardarJugador2()">
+        <h4>Jugador 2:
+            <input type="text" name="jugador2" id="nombJugador2" onchange="guardarJugador2()">
+            <!-- <button type="button" onclick="guardarJugador2()">
                 Guardar Jugador 2
-            </button>
+            </button> -->
         </h4>
     </div>
     <br>
-    <div>
-
-    </div>
+    <br>
+    <div id="turnoJugador"></div>
     <table>
-        <thead>
-        </thead>
         <tbody>
             <tr>
-                <td>
-                    <button id="0" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="1" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="2" type="button" onclick="marcar(id)">
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <button id="3" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="4" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="5" type="button" onclick="marcar(id)">
-                </td>
+                <td id="00" onclick="marcar(0,0)"></td>
+                <td id="01" onclick="marcar(0,1)"></td>
+                <td id="02" onclick="marcar(0,2)"></td>
             </tr>
             <tr>
-                <td>
-                    <button id="6" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="7" type="button" onclick="marcar(id)">
-                </td>
-                <td>
-                    <button id="8" type="button" onclick="marcar(id)">
-                </td>
+                <td id="10" onclick="marcar(1,0)"></td>
+                <td id="11" onclick="marcar(1,1)"></td>
+                <td id="12" onclick="marcar(1,2)"></td>
+            </tr>
+            <tr>
+                <td id="20" onclick="marcar(2,0)"></td>
+                <td id="21" onclick="marcar(2,1)"></td>
+                <td id="22" onclick="marcar(2,2)"></td>
             </tr>
         </tbody>
     </table>
