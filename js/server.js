@@ -18,31 +18,22 @@ server.listen(port)
 console.log('Servidor andando en el puerto: ', port)
 
 function homePage(req, res) {
-    switch (`${req.url}`) {
-        case '/home':
-            fs.readFile('../index.html', function read(err, data) {
-                if (err) {
-                    common.handle404(req, res)
-                    return;
-                }
-                res.writeHead(200, { 'Content-Type': 'text/html' })
-                res.write(data)
-                res.end()
-            });
-            break;
-        case '/js/tateti.js':
-            fs.readFile('./tateti.js', function read(err, data) {
-                if (err) {
-                    common.handle404(req, res)
-                    return;
-                }
-                res.writeHead(200, { 'Content-Type': 'application/javascript' })
-                res.write(data)
-                res.end()
-            })
-            break;
-        default:
-            common.handle404(req, res)
-            break;
+    var url = req.url
+    if (url === "/") {
+        url = "/index.html"
     }
+
+    fs.readFile('../www' + url, function read(err, data) {
+        if (err) {
+            common.handle404(req, res)
+            return;
+        }
+        if (url.indexOf(".js") > 0) {
+            res.writeHead(200, { 'Content-Type': 'application/javascript' })
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+        }
+        res.write(data)
+        res.end()
+    });
 }
