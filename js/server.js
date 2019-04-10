@@ -40,16 +40,9 @@ function homePage(req, res) {
                 res.write(data)
                 res.end()
             })
-
+            break;
+        default:
+            common.handle404(req, res)
+            break;
     }
-    // fs.readFile('../index.html', function read(err, data) {
-    //     if (err) {
-    //         common.handle404(req, res)
-    //         return;
-    //     }
-    //     res.writeHead(200, { 'Content-Type': 'text/html' })
-    //     res.write(data)
-    //     res.end()
-    // })
-
 }
