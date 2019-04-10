@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego Tateti - Fabio Muñoz</title>
+    <script type="text/javascript" src="tateti.js"></script>
+    <style>
+        table td {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+        
+        .player1 {
+            background-color: red;
+        }
+        
+        .player2 {
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body onload="juegoNuevo()">
+    <h2>Tateti</h2>
+    <br>
+    <div>
+        <h4>Jugador 1:
+            <input type="text" name="jugador1" id="nombJugador1" onchange="guardarJugador1()">
+            <!-- <button type="button" onclick="guardarJugador1()">
+                Guardar Jugador 1
+            </button> -->
+        </h4>
+        <h4>Jugador 2:
+            <input type="text" name="jugador2" id="nombJugador2" onchange="guardarJugador2()">
+            <!-- <button type="button" onclick="guardarJugador2()">
+                Guardar Jugador 2
+            </button> -->
+        </h4>
+    </div>
+    <br>
+    <button onclick="juegoNuevo()">Jugar otra vez</button>
+    <br>
+    <div id="turnoJugador"></div>
+    <table>
+        <tbody>
+            <tr>
+                <td id="00" onclick="marcar(0,0)"></td>
+                <td id="01" onclick="marcar(0,1)"></td>
+                <td id="02" onclick="marcar(0,2)"></td>
+            </tr>
+            <tr>
+                <td id="10" onclick="marcar(1,0)"></td>
+                <td id="11" onclick="marcar(1,1)"></td>
+                <td id="12" onclick="marcar(1,2)"></td>
+            </tr>
+            <tr>
+                <td id="20" onclick="marcar(2,0)"></td>
+                <td id="21" onclick="marcar(2,1)"></td>
+                <td id="22" onclick="marcar(2,2)"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<div id="ganador"></div>
