@@ -44,6 +44,7 @@ function marcar(fila, columna) {
 
     if (tatetiLogrado()) {
         refreshUI()
+        crearJSON()
         return
     } else {
         refreshUI()
@@ -118,4 +119,15 @@ function tatetiLogrado() {
     }
 
     return false
+}
+
+function crearJSON() {
+    var partida = new Object();
+    partida.jugador1 = nombreJugador1;
+    partida.jugador2 = nombreJugador2;
+    partida.resultado = tabla.toString();
+    partida.ganador = ganador;
+
+    var jugada = JSON.stringify(partida);
+    return jugada
 }
