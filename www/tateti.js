@@ -123,11 +123,22 @@ function tatetiLogrado() {
 
 function crearJSON() {
     var partida = new Object();
+    partida.fecha = new Date();
     partida.jugador1 = nombreJugador1;
     partida.jugador2 = nombreJugador2;
     partida.resultado = tabla.toString();
     partida.ganador = ganador;
 
     var jugada = JSON.stringify(partida);
-    return jugada
+
+    guardarPartida(jugada);
+}
+
+function guardarPartida(jugada) {
+    $.ajax({
+        url: '/guardarTateti',
+        type: 'POST',
+        data: jugada,
+        dataType: 'json',
+    })
 }

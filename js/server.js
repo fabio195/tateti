@@ -4,13 +4,27 @@ const fs = require('fs')
 
 const port = 8283
 
+var jugadas = [];
+var jugada
+
 const server = http.createServer((req, res) => {
-    const routes = {
-        '/home': {
-            method: 'GET',
-            handler: homePage(req, res)
+    let body = [];
+    req.on('error', (err) => {
+        console.error(err)
+    }).on('data', (chunk) => {
+        body.push(chunk)
+    }).on('end', () => {
+        body = Buffer.concat(body).toString()
+        req.body = body
+        jugada = body
+
+        if (req.url === '/guardarTateti') {
+            guardarPartida(req, res)
+        } else {
+            homePage(req, res)
         }
-    }
+
+    });
 
 })
 
@@ -36,4 +50,16 @@ function homePage(req, res) {
         res.write(data)
         res.end()
     });
+}
+
+function guardarPartida(req, res) {
+    var url = req.url
+    console.log('jugada: ', jugada)
+    if (url === '/guardarTateti') {
+        jugadas.push(jugada)
+    } else {
+        common.handle404(req, res)
+    }
+    res.end()
+    console.log('jugadas: ', jugadas)
 }
