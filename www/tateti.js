@@ -142,3 +142,29 @@ function guardarPartida(jugada) {
         dataType: 'json',
     })
 }
+
+var historial
+
+function verHistorial() {
+
+    return new Promise(resolve => {
+        $(document).ready(function() {
+
+            $.ajax({
+                url: '/verHistorial',
+                type: 'GET',
+                error: function(error) {
+                    console.log(`Error ${error}`)
+                }
+            }).then(function(historialServer) {
+                resolve(historialServer)
+            });
+        });
+    });
+}
+
+async function verHistorialAsync() {
+    historial = await verHistorial()
+    console.log('historial: ', historial)
+    return historial
+}

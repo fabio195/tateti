@@ -20,10 +20,12 @@ const server = http.createServer((req, res) => {
 
         if (req.url === '/guardarTateti') {
             guardarPartida(req, res)
+        } else
+        if (req.url === '/verHistorial') {
+            verHistorial(req, res)
         } else {
             homePage(req, res)
         }
-
     });
 
 })
@@ -62,4 +64,12 @@ function guardarPartida(req, res) {
     }
     res.end()
     console.log('jugadas: ', jugadas)
+}
+
+function verHistorial(req, res) {
+    console.log('se llama a ver historial')
+    res.historial = jugadas
+    console.log('respuesta: ', res.historial)
+    res.write(res.historial.toString())
+    res.end()
 }
