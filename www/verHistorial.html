@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego Tateti - Fabio Muñoz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="tateti.js"></script>
+
+    <style>
+        table td {
+            height: 100px;
+            width: 100px;
+            background-color: blue;
+        }
+        
+        .player1 {
+            background-color: red;
+        }
+        
+        .player2 {
+            background-color: yellow;
+        }
+    </style>
+
+</head>
+
+<body onload="traerHistorialServerAsync()">
+    <h2>Tateti</h2>
+    <br>
+    <table>
+        <script>
+            historialJson.forEach(element => {
+                document.getElementById('partida1').innerText = '' + historialJson
+            });
+        </script>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+
+    <div id="historial"></div>
+
+</body>
