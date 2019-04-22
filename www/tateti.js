@@ -121,8 +121,12 @@ function tatetiLogrado() {
     return false
 }
 
+var contador = 1;
+
 function crearJSON() {
+
     var partida = new Object();
+    partida.numero = contador++;
     partida.fecha = new Date();
     partida.jugador1 = nombreJugador1;
     partida.jugador2 = nombreJugador2;
@@ -143,15 +147,35 @@ function guardarPartida(jugada) {
     })
 }
 
-var historial
-
-function verHistorial() {
+function navegarVerHistorial() {
 
     return new Promise(resolve => {
         $(document).ready(function() {
 
             $.ajax({
                 url: '/verHistorial',
+                type: 'GET',
+                error: function(error) {
+                    console.log(`Error ${error}`)
+                }
+            }).then(function(verHistorialHtml) {
+                resolve(verHistorialHtml)
+            });
+        });
+    });
+}
+
+async function navegarVerHistorialAsync() {
+    await navegarVerHistorial()
+    window.open('/verHistorial')
+}
+
+function traerHistorialServer() {
+    return new Promise(resolve => {
+        $(document).ready(function() {
+
+            $.ajax({
+                url: '/traerHistorial',
                 type: 'GET',
                 error: function(error) {
                     console.log(`Error ${error}`)
@@ -163,8 +187,10 @@ function verHistorial() {
     });
 }
 
-async function verHistorialAsync() {
-    historial = await verHistorial()
-    console.log('historial: ', historial)
-    return historial
+var historialJson
+
+async function traerHistorialServerAsync() {
+    var historial = await traerHistorialServer();
+    historialJson = JSON.parse(historial)
+    return historialJson
 }

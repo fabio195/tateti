@@ -22,7 +22,10 @@ const server = http.createServer((req, res) => {
             guardarPartida(req, res)
         } else
         if (req.url === '/verHistorial') {
-            verHistorial(req, res)
+            navegarVerHistorial(req, res)
+        } else
+        if (req.url === '/traerHistorial') {
+            traerHistorial(req, res)
         } else {
             homePage(req, res)
         }
@@ -56,20 +59,38 @@ function homePage(req, res) {
 
 function guardarPartida(req, res) {
     var url = req.url
-    console.log('jugada: ', jugada)
     if (url === '/guardarTateti') {
         jugadas.push(jugada)
     } else {
         common.handle404(req, res)
     }
     res.end()
-    console.log('jugadas: ', jugadas)
 }
 
-function verHistorial(req, res) {
-    console.log('se llama a ver historial')
-    res.historial = jugadas
-    console.log('respuesta: ', res.historial)
-    res.write(res.historial.toString())
+function navegarVerHistorial(req, res) {
+    var url = req.url
+    if (url === "/verHistorial") {
+        url = "/verHistorial.html"
+    }
+
+    fs.readFile('../www' + url, function read(err, data) {
+        if (err) {
+            common.handle404(req, res)
+            return;
+        }
+        if (url.indexOf(".js") > 0) {
+            res.writeHead(200, { 'Content-Type': 'application/javascript' })
+        } else {
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+        }
+        res.write(data)
+        res.end()
+    });
+}
+
+function traerHistorial(req, res) {
+    req.historial = jugadas;
+    var historialServer = req.historial
+    res.write(historialServer.toString())
     res.end()
 }
