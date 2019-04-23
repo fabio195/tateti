@@ -210,11 +210,11 @@ function armarUI() {
 
     for (var i = 0; i < largo; i++) {
         document.getElementById('h_partidaNumero' + i).innerText = 'Partida Numero: ' + historialJson[i].numero
-        document.getElementById('h_nombreJugador1').innerText = 'Jugador 1: ' + historialJson[i].jugador1
-        document.getElementById('h_nombreJugador2').innerText = 'Jugador 2: ' + historialJson[i].jugador2
-        document.getElementById('h_ganador').innerText = 'Ganador: ' + historialJson[i].ganador
-        document.getElementById('h_resultado').innerText = 'Resultado: ' + historialJson[i].resultado
-        document.getElementById('h_fecha').innerText = 'Fecha: ' + historialJson[i].fecha
+        document.getElementById('h_nombreJugador1p' + i).innerText = 'Jugador 1: ' + historialJson[i].jugador1
+        document.getElementById('h_nombreJugador2p' + i).innerText = 'Jugador 2: ' + historialJson[i].jugador2
+        document.getElementById('h_ganadorp' + i).innerText = 'Ganador: ' + historialJson[i].ganador
+        document.getElementById('h_resultadop' + i).innerText = 'Resultado: ' + historialJson[i].resultado
+        document.getElementById('h_fechap' + i).innerText = 'Fecha: ' + historialJson[i].fecha
     }
 
 
