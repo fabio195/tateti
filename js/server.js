@@ -60,6 +60,7 @@ function homePage(req, res) {
 function guardarPartida(req, res) {
     var url = req.url
     if (url === '/guardarTateti') {
+        jugada = JSON.parse(jugada)
         jugadas.push(jugada)
     } else {
         common.handle404(req, res)
@@ -90,7 +91,11 @@ function navegarVerHistorial(req, res) {
 
 function traerHistorial(req, res) {
     req.historial = jugadas;
+    console.log('req.historial el server: ', req.historial)
+
     var historialServer = req.historial
-    res.write(historialServer.toString())
+    historialServer = JSON.stringify(historialServer)
+    console.log('historial en el server: ', historialServer)
+    res.write(historialServer)
     res.end()
 }

@@ -47,10 +47,9 @@ function marcar(fila, columna) {
         crearJSON()
         return
     } else {
+        jugador = (jugador == 1) ? 2 : 1
         refreshUI()
     }
-
-    jugador = (jugador == 1) ? 2 : 1
 
 }
 
@@ -127,7 +126,7 @@ function crearJSON() {
 
     var partida = new Object();
     partida.numero = contador++;
-    partida.fecha = new Date();
+    partida.fecha = new Date().toLocaleDateString();
     partida.jugador1 = nombreJugador1;
     partida.jugador2 = nombreJugador2;
     partida.resultado = tabla.toString();
@@ -187,10 +186,36 @@ function traerHistorialServer() {
     });
 }
 
-var historialJson
+var historialJson = []
 
 async function traerHistorialServerAsync() {
     var historial = await traerHistorialServer();
-    historialJson = JSON.parse(historial)
+    // historial = JSON.parse(historial)
+
+    // console.log('historial es arreglo?: ', historial)
+
+
+    historialJson.push(historial)
+    historialJson = JSON.parse(historialJson)
+    historialJson.join(',')
+    console.log('historialjson: ', historialJson)
+    armarUI()
     return historialJson
+}
+
+function armarUI() {
+
+    var largo = historialJson.length
+    console.log('largo = ', largo)
+
+    for (var i = 0; i < largo; i++) {
+        document.getElementById('h_partidaNumero' + i).innerText = 'Partida Numero: ' + historialJson[i].numero
+        document.getElementById('h_nombreJugador1').innerText = 'Jugador 1: ' + historialJson[i].jugador1
+        document.getElementById('h_nombreJugador2').innerText = 'Jugador 2: ' + historialJson[i].jugador2
+        document.getElementById('h_ganador').innerText = 'Ganador: ' + historialJson[i].ganador
+        document.getElementById('h_resultado').innerText = 'Resultado: ' + historialJson[i].resultado
+        document.getElementById('h_fecha').innerText = 'Fecha: ' + historialJson[i].fecha
+    }
+
+
 }

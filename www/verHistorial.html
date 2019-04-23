@@ -7,7 +7,7 @@
     <script type="text/javascript" src="tateti.js"></script>
 
     <style>
-        table td {
+        /* table td {
             height: 100px;
             width: 100px;
             background-color: blue;
@@ -19,7 +19,7 @@
         
         .player2 {
             background-color: yellow;
-        }
+        } */
     </style>
 
 </head>
@@ -28,18 +28,30 @@
     <h2>Tateti</h2>
     <br>
     <table>
-        <script>
-            historialJson.forEach(element => {
-                document.getElementById('partida1').innerText = '' + historialJson
-            });
-        </script>
-        <tr>
-            <td>
+        <tbody>
+            <th id="h_partidaNumero0">
+                <tr id="h_nombreJugador1"></tr>
+                <tr id="h_nombreJugador2"></tr>
+                <th id="h_ganador"></th>
+                <tr id="h_resultado"></tr>
+                <tr id="h_fecha"></tr>
+            </th>
+            <th id="h_partidaNumero1">
+                <tr id="h_nombreJugador1"></tr>
+                <tr id="h_nombreJugador2"></tr>
+                <th id="h_ganador"></th>
+                <tr id="h_resultado"></tr>
+                <tr id="h_fecha"></tr>
+            </th>
+            <th id="h_partidaNumero2">
+                <tr id="h_nombreJugador1"></tr>
+                <tr id="h_nombreJugador2"></tr>
+                <th id="h_ganador"></th>
+                <tr id="h_resultado"></tr>
+                <tr id="h_fecha"></tr>
+            </th>
+        </tbody>
 
-            </td>
-        </tr>
     </table>
-
-    <div id="historial"></div>
 
 </body>
