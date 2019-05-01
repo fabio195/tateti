@@ -91,11 +91,8 @@ function navegarVerHistorial(req, res) {
 
 function traerHistorial(req, res) {
     req.historial = jugadas;
-    console.log('req.historial el server: ', req.historial)
-
     var historialServer = req.historial
     historialServer = JSON.stringify(historialServer)
-    console.log('historial en el server: ', historialServer)
     res.write(historialServer)
     res.end()
 }

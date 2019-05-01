@@ -190,15 +190,9 @@ var historialJson = []
 
 async function traerHistorialServerAsync() {
     var historial = await traerHistorialServer();
-    // historial = JSON.parse(historial)
-
-    // console.log('historial es arreglo?: ', historial)
-
-
     historialJson.push(historial)
     historialJson = JSON.parse(historialJson)
     historialJson.join(',')
-    console.log('historialjson: ', historialJson)
     armarUI()
     return historialJson
 }
@@ -206,7 +200,6 @@ async function traerHistorialServerAsync() {
 function armarUI() {
 
     var largo = historialJson.length
-    console.log('largo = ', largo)
 
     for (var i = 0; i < largo; i++) {
         document.getElementById('h_partidaNumero' + i).innerText = 'Partida Numero: ' + historialJson[i].numero
